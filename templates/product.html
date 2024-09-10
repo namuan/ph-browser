@@ -18,7 +18,7 @@
                 <p class="lead font-italic">{{ product['product_description'] }}</p>
                 <ul class="list-unstyled mt-3">
                     {% for website in product['websites'] %}
-                        <li><a href="{{ website }}" target="_blank">{{ website }}</a></li>
+                        <li><a href="{{ website }}" target="_blank" class="btn btn-outline-primary btn-sm mb-1">{{ website }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
