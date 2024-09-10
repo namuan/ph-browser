@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+import json
 from livereload import Server
 import csv
 
@@ -24,7 +25,20 @@ def show_product():
     product = products[current_index]
     return render_template('product.html', product=product)
 
-@app.route('/next')
+@app.route('/like', methods=['POST'])
+def like_product():
+    global current_index
+    product = products[current_index]
+    try:
+        with open('liked_products.json', 'r+', encoding='utf-8') as file:
+            liked_products = json.load(file)
+            liked_products.append(product)
+            file.seek(0)
+            json.dump(liked_products, file, ensure_ascii=False, indent=4)
+    except FileNotFoundError:
+        with open('liked_products.json', 'w', encoding='utf-8') as file:
+            json.dump([product], file, ensure_ascii=False, indent=4)
+    return jsonify(success=True)
 def next_product():
     global current_index
     current_index = (current_index + 1) % len(products)
