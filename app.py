@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from livereload import Server
 import csv
 
 app = Flask(__name__)
@@ -37,4 +38,5 @@ def previous_product():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    server = Server(app.wsgi_app)
+    server.serve(port=5000, debug=True)
