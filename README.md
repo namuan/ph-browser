@@ -24,8 +24,8 @@ https://components.one/datasets/product-hunt-products
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/namuan/ph-bin.git
-cd ph-bin
+git clone https://github.com/namuan/ph-browser.git
+cd ph-browser
 ```
 
 2. Create a virtual environment and activate it:
