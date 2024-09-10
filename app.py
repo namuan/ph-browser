@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, redirect, url_for
 import json
+import ast
 import csv
 
 app = Flask(__name__)
@@ -12,6 +13,8 @@ def load_products():
         for row in reader:
             # Parse the comments field from the CSV
             row['comments'] = eval(row['comments'])
+            # Convert the websites field to a Python list
+            row['websites'] = ast.literal_eval(row['websites'])
             products.append(row)
     return products
 
