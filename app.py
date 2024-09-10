@@ -38,7 +38,7 @@ def like_product():
     except FileNotFoundError:
         with open('liked_products.json', 'w', encoding='utf-8') as file:
             json.dump([product], file, ensure_ascii=False, indent=4)
-    return redirect(url_for('next_product'))
+    return jsonify(success=True, redirect=url_for('next_product'))
 @app.route('/next')
 def next_product():
     global current_index

@@ -37,7 +37,9 @@
         fetch('/like', { method: 'POST' })
             .then(response => response.json())
             .then(data => {
-                // Handle success if needed
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
             });
     }
 </script>
