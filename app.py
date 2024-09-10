@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, redirect, url_for
 import json
 import csv
 
@@ -38,7 +38,7 @@ def like_product():
     except FileNotFoundError:
         with open('liked_products.json', 'w', encoding='utf-8') as file:
             json.dump([product], file, ensure_ascii=False, indent=4)
-    return jsonify(success=True)
+    return redirect(url_for('next_product'))
 def next_product():
     global current_index
     current_index = (current_index + 1) % len(products)
