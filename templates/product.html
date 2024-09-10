@@ -12,8 +12,10 @@
         <h1>{{ product['name'] }}</h1>
         <p class="text-muted">Release Date: {{ product['release_date'] }} | Upvotes: {{ product['upvotes'] }}</p>
         <p>{{ product['product_description'] }}</p>
-        <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" class="img-fluid" style="max-width: 300px;">
-        <div class="btn-group mt-3" role="group">
+        <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" class="img-fluid mx-auto d-block" style="max-width: 300px;">
+    </div>
+    <div class="text-center mt-3">
+        <div class="btn-group" role="group">
             <button type="button" onclick="likeProduct()" class="btn btn-success btn-lg">Like</button>
             <button type="button" onclick="skipProduct()" class="btn btn-danger btn-lg">Skip</button>
         </div>
