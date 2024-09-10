@@ -12,8 +12,10 @@
     <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" style="max-width: 300px;">
     <p>Release Date: {{ product['release_date'] }}</p>
     <p>Upvotes: {{ product['upvotes'] }}</p>
-    <button type="button" style="background-color: green; color: white;">Like</button>
-    <button type="button" style="background-color: red; color: white;">Skip</button>
+    <div style="text-align: center; margin: 20px 0;">
+        <button type="button" style="background-color: green; color: white; font-size: 1.5em; padding: 10px 20px;">Like</button>
+        <button type="button" style="background-color: red; color: white; font-size: 1.5em; padding: 10px 20px;">Skip</button>
+    </div>
     <h2>Comments</h2>
     <ul>
         {% for comment in product['comments'] %}
