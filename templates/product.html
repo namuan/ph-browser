@@ -7,7 +7,8 @@
     <meta http-equiv="refresh" content="30">
 </head>
 <body>
-    <h1>{{ product['name'] }} - Release Date: {{ product['release_date'] }} - Upvotes: {{ product['upvotes'] }}</h1>
+    <h1>{{ product['name'] }}</h1>
+    <p style="font-size: 0.8em;">Release Date: {{ product['release_date'] }} | Upvotes: {{ product['upvotes'] }}</p>
     <p>{{ product['product_description'] }}</p>
     <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" style="max-width: 300px;">
     <p>Release Date: {{ product['release_date'] }}</p>
