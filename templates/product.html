@@ -11,8 +11,6 @@
     <p style="font-size: 0.8em;">Release Date: {{ product['release_date'] }} | Upvotes: {{ product['upvotes'] }}</p>
     <p>{{ product['product_description'] }}</p>
     <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" style="max-width: 300px;">
-    <p>Release Date: {{ product['release_date'] }}</p>
-    <p>Upvotes: {{ product['upvotes'] }}</p>
     <div style="display: flex; justify-content: center; margin: 20px 0;">
         <button type="button" onclick="likeProduct()" style="background-color: green; color: white; font-size: 1.5em; padding: 10px 20px; margin-right: 10px;">Like</button>
         <button type="button" onclick="skipProduct()" style="background-color: red; color: white; font-size: 1.5em; padding: 10px 20px; margin-left: 10px;">Skip</button>
