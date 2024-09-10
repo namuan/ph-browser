@@ -9,6 +9,8 @@ def load_products():
     with open('sample_products.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
+            # Parse the comments field from the CSV
+            row['comments'] = eval(row['comments'])
             products.append(row)
     return products
 
