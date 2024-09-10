@@ -11,6 +11,8 @@
     <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" style="max-width: 300px;">
     <p>Release Date: {{ product['release_date'] }}</p>
     <p>Upvotes: {{ product['upvotes'] }}</p>
+    <button type="button">Like</button>
+    <button type="button">Skip</button>
     <h2>Comments</h2>
     <ul>
         {% for comment in product['comments'] %}
