@@ -31,9 +31,10 @@ def like_product():
     try:
         with open('liked_products.json', 'r+', encoding='utf-8') as file:
             liked_products = json.load(file)
-            liked_products.append(product)
-            file.seek(0)
-            json.dump(liked_products, file, ensure_ascii=False, indent=4)
+            if product not in liked_products:
+                liked_products.append(product)
+                file.seek(0)
+                json.dump(liked_products, file, ensure_ascii=False, indent=4)
     except FileNotFoundError:
         with open('liked_products.json', 'w', encoding='utf-8') as file:
             json.dump([product], file, ensure_ascii=False, indent=4)
