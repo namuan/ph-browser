@@ -22,6 +22,8 @@ current_index = 0
 def show_product():
     global current_index
     product = products[current_index]
+    # Format the release date to remove the timestamp
+    product['release_date'] = product['release_date'].split(' ')[0]
     return render_template('product.html', product=product)
 
 @app.route('/like', methods=['POST'])
