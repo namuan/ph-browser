@@ -33,11 +33,6 @@ def previous_product():
     current_index = (current_index - 1) % len(products)
     return show_product()
 
-app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
 
 if __name__ == '__main__':
     app.run(debug=True)
