@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Load products from CSV
 def load_products():
     products = []
-    with open('sample_products.csv', newline='', encoding='utf-8') as csvfile:
+    with open('products.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # Parse the comments field from the CSV

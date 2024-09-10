@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
+    <title>Product Hunt :: {{ product['name'] }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -158,13 +158,13 @@
     {% for comment in product['comments'] %}
     <div class="comment-card">
         <h5><i class="fas fa-user-circle mr-2"></i>{{ comment['user_name'] }}</h5>
-        <p>{{ comment['comment'] }}</p>
+        <div>{{ comment['comment']|safe }}</div>
         {% if comment['replies'] %}
         <div class="mt-3">
             {% for reply in comment['replies'] %}
             <div class="reply-card mt-2">
                 <h6 class="text-muted"><i class="fas fa-reply mr-2"></i>{{ reply['user_name'] }}</h6>
-                <p>{{ reply['comment'] }}</p>
+                <div>{{ reply['comment']|safe }}</div>
             </div>
             {% endfor %}
         </div>
