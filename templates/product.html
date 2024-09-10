@@ -6,60 +6,122 @@
     <title>Product Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            color: #333;
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-background: #fff;
         }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
         .product-card {
-            background-color: #fff;
+            background-color: var(--card-background);
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
+            transition: box-shadow 0.3s ease;
         }
+
+        .product-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .product-image {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
         .btn-like, .btn-skip {
             border-radius: 25px;
             padding: 0.5rem 2rem;
             font-weight: bold;
             transition: all 0.3s ease;
         }
+
         .btn-like:hover, .btn-skip:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+
         .comment-card {
-            border-left: 4px solid #007bff;
-            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            background-color: var(--background-color);
             margin-bottom: 1rem;
             padding: 1rem;
             border-radius: 0 5px 5px 0;
         }
+
         .reply-card {
-            border-left: 2px solid #6c757d;
-            background-color: #fff;
+            border-left: 2px solid var(--secondary-color);
+            background-color: var(--card-background);
             margin-left: 2rem;
             padding: 0.5rem 1rem;
             border-radius: 0 5px 5px 0;
         }
+
         .website-link {
             display: inline-block;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
         }
+
+        .website-link:hover {
+            transform: translateY(-2px);
+        }
+
         .button-container {
-            margin-bottom: 2rem; /* Add space below the buttons */
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background-color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .dark-mode {
+            --background-color: #2c3e50;
+            --text-color: #ecf0f1;
+            --card-background: #34495e;
         }
     </style>
 </head>
 <body>
 <div class="container mt-5">
+    <button id="darkModeToggle" class="btn btn-secondary">Toggle Dark Mode</button>
+
+    <div class="progress-bar" style="width: 30%;"></div>
+
     <div class="product-card">
         <h1 class="text-center mb-4">{{ product['name'] }}</h1>
         <p class="text-center text-muted">
@@ -77,7 +139,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-md-6 text-center mb-4 mb-md-0">
-                <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" class="product-image">
+                <img src="{{ product['main_image'] }}" alt="{{ product['name'] }}" class="product-image" onclick="openImageModal(this.src)">
             </div>
             <div class="col-md-6">
                 <p class="lead font-italic">{{ product['product_description'] }}</p>
@@ -111,6 +173,16 @@
     {% endfor %}
 </div>
 
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" class="img-fluid" id="modalImage">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -124,9 +196,19 @@
                 }
             });
     }
+
     function skipProduct() {
         window.location.href = '/next';
     }
+
+    function openImageModal(src) {
+        $('#modalImage').attr('src', src);
+        $('#imageModal').modal('show');
+    }
+
+    document.getElementById('darkModeToggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
 </script>
 </body>
 </html>
