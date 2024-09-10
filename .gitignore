@@ -1,3 +1,8 @@
 .aider*
 .idea/
 *.iml
+*.csv
+liked_products.json
+*.txt
+__pycache__/
+.venv/
