@@ -14,7 +14,7 @@
     <p>Upvotes: {{ product['upvotes'] }}</p>
     <div style="display: flex; justify-content: center; margin: 20px 0;">
         <button type="button" onclick="likeProduct()" style="background-color: green; color: white; font-size: 1.5em; padding: 10px 20px; margin-right: 10px;">Like</button>
-        <button type="button" style="background-color: red; color: white; font-size: 1.5em; padding: 10px 20px; margin-left: 10px;">Skip</button>
+        <button type="button" onclick="skipProduct()" style="background-color: red; color: white; font-size: 1.5em; padding: 10px 20px; margin-left: 10px;">Skip</button>
     </div>
     <h2>Comments</h2>
     <ul>
@@ -41,6 +41,9 @@
                     window.location.href = data.redirect;
                 }
             });
+    }
+    function skipProduct() {
+        window.location.href = '/next';
     }
 </script>
 </body>
