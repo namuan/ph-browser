@@ -24,20 +24,28 @@
             <button type="button" onclick="skipProduct()" class="btn btn-danger btn-lg ml-2">Skip</button>
         </div>
     </div>
-    <ul class="list-unstyled">
+    <div class="mt-4">
         {% for comment in product['comments'] %}
-            <li class="mb-3">
-                <strong>{{ comment['user_name'] }}:</strong> {{ comment['comment'] }}
-                {% if comment['replies'] %}
-                    <ul class="list-unstyled ml-4">
-                        {% for reply in comment['replies'] %}
-                            <li><strong>{{ reply['user_name'] }}:</strong> {{ reply['comment'] }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </li>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ comment['user_name'] }}</h5>
+                    <p class="card-text">{{ comment['comment'] }}</p>
+                    {% if comment['replies'] %}
+                        <div class="ml-4">
+                            {% for reply in comment['replies'] %}
+                                <div class="card mt-2">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle mb-2 text-muted">{{ reply['user_name'] }}</h6>
+                                        <p class="card-text">{{ reply['comment'] }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 <script>
     function likeProduct() {
         fetch('/like', { method: 'POST' })
